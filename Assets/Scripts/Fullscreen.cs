@@ -15,8 +15,6 @@ public class Fullscreen : MonoBehaviour
         float screenWidth = screenHeight/Screen.height*Screen.width;
         tempScale.x = screenWidth / spriteWidth;
         transform.localScale = tempScale;
-
-        Debug.Log($"Sprite Width: {spriteWidth}, Screen Height: {screenHeight}, Screen Width: {screenWidth}, {Screen.height}, {Screen.width}, {screenHeight/Screen.height * Screen.width}");
     }
 
     
