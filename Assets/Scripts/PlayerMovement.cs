@@ -30,13 +30,13 @@ public class PlayerMovement : MonoBehaviour
         {
             _velocity.x = Mathf.MoveTowards(_velocity.x, movementInput * 3.0f, 10.0f * Time.deltaTime);
             _animator.SetBool("Walk", true);
-            scale.x = 1;
+            scale.x = Mathf.Abs(scale.x);
         }
         else if (movementInput < 0)
         {
             _velocity.x = Mathf.MoveTowards(_velocity.x, movementInput * 3.0f, 10.0f * Time.deltaTime);
             _animator.SetBool("Walk", true);
-            scale.x = -1;
+            scale.x = -Mathf.Abs(scale.x);
         }
         else
         {
