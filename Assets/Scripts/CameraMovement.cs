@@ -8,7 +8,7 @@ public class CameraMovement : MonoBehaviour
     float _speedBoost;
     float _maxSpeed;
 
-    bool _isMoving;
+    bool _isMoving=true;
 
     void Start()
     {

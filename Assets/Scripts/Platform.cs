@@ -9,7 +9,7 @@ public class Platform : MonoBehaviour
     float _randomSpeed;
     float _min, _max;
 
-    bool _movement = true;
+    bool _movement;
 
     public bool Movement
     {
