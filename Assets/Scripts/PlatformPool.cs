@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlatformPool : MonoBehaviour
 {
     [SerializeField] GameObject _platformPrefab;
+    [SerializeField] GameObject _deadlyPlatformPrefab;
     [SerializeField] GameObject _playerPefab;
 
     List<GameObject> _platforms = new List<GameObject>();
@@ -39,15 +40,20 @@ public class PlatformPool : MonoBehaviour
         _platforms.Add(firstPlatform);
         NextPlatformPosition();
 
-        firstPlatform.GetComponent<Platform>().Movement = false;
+        firstPlatform.GetComponent<Platform>().Movement = true;
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 8; i++)
         {
             GameObject platform = Instantiate(_platformPrefab, _platformPosition, Quaternion.identity);
             _platforms.Add(platform);
             platform.GetComponent<Platform>().Movement = true;
             NextPlatformPosition();
         }
+
+        GameObject deadlyPlatform = Instantiate(_deadlyPlatformPrefab, _platformPosition, Quaternion.identity);
+        deadlyPlatform.GetComponent<DeadlyPlatform>().Movement = true;
+        _platforms.Add(deadlyPlatform);
+        NextPlatformPosition();
     }
 
     void PlacePlatform()
@@ -66,8 +72,8 @@ public class PlatformPool : MonoBehaviour
     void NextPlatformPosition()
     {
         _platformPosition.y += _platformDistanceY;
-        float random = Random.Range(0, 1);
-        if (random < 0.5f)
+        float random = Random.Range(0, 2);
+        if (random < 1f)
         {
             _platformPosition.x = ScreenCalculator._instance.Width / 2;
         }

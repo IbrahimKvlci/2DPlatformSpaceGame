@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5259759694114462643}
   - component: {fileID: 5649567522000511085}
   - component: {fileID: 4649316719342810724}
+  - component: {fileID: -6807577528530390513}
   m_Layer: 0
   m_Name: DeadlyPlatform
   m_TagString: Untagged
@@ -130,3 +131,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.101153, y: 1.0255885}
   m_EdgeRadius: 0
+--- !u!114 &-6807577528530390513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6868004334666306783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd4e03c0d5936d34dbd70c189f7f1408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

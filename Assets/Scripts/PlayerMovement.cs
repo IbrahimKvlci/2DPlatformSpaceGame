@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] float _jumpForce;
+    [SerializeField] float _jumpLimit = 3;
+
     Rigidbody2D _rb;
     Animator _animator;
 
     Vector2 _velocity;
+
+    float _jumpCount;
+
 
     void Start()
     {
@@ -16,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     
-    void FixedUpdate()
+    void Update()
     {
         KeyboardControl();
     }
@@ -46,5 +52,35 @@ public class PlayerMovement : MonoBehaviour
 
         transform.localScale = scale;
         transform.Translate(_velocity * Time.deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            StopJump();
+        }
+    }
+
+    void Jump()
+    {
+        if (_jumpCount < _jumpLimit)
+        {
+            _rb.AddForce(new Vector2(0, _jumpForce), ForceMode2D.Impulse);
+            _animator.SetBool("Jump", true);
+        }
+        
+    }
+
+    void StopJump()
+    {
+        _animator.SetBool("Jump", false);
+        _jumpCount++;
+    }
+
+    public void ResetJumpCount()
+    {
+        _jumpCount = 0;
     }
 }

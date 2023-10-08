@@ -46,4 +46,22 @@ public class Platform : MonoBehaviour
             transform.position = pingPong;  
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Foot")
+        {
+            GameObject.FindGameObjectWithTag("Player").transform.parent = transform;
+            GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerMovement>().ResetJumpCount();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Foot")
+        {
+            GameObject.FindGameObjectWithTag("Player").transform.parent = null;
+        }
+    }
+
 }
