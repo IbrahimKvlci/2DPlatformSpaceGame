@@ -31,9 +31,9 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 #if UNITY_EDITOR
-        JoystickControl();
-#else
         KeyboardControl();
+#else
+        JoystickControl();
 #endif
 
     }
