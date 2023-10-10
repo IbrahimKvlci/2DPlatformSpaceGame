@@ -47,6 +47,10 @@ public class PlatformPool : MonoBehaviour
             GameObject platform = Instantiate(_platformPrefab, _platformPosition, Quaternion.identity);
             _platforms.Add(platform);
             platform.GetComponent<Platform>().Movement = true;
+            if (i % 2 == 0)
+            {
+                platform.GetComponent<Gold>().OnGold();
+            }
             NextPlatformPosition();
         }
 
@@ -65,6 +69,17 @@ public class PlatformPool : MonoBehaviour
             _platforms[i + 5] = _platforms[i];
             _platforms[i] = temp;
             _platforms[i + 5].transform.position = _platformPosition;
+            if (_platforms[i + 5].gameObject.tag == "Platform")
+            {
+                _platforms[i + 5].GetComponent<Gold>().OffGold();
+                float randomGold = Random.Range(0.0f, 1.0f);
+                print(randomGold);
+                if (randomGold > 0.4f)
+                {
+                    print("a");
+                    _platforms[i + 5].GetComponent<Gold>().OnGold();
+                }
+            }
             NextPlatformPosition();
         }
     }

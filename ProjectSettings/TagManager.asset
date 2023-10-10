@@ -45,6 +45,12 @@ TagManager:
   - name: Platform
     uniqueID: 1306028619
     locked: 0
+  - name: Gold
+    uniqueID: 3166227505
+    locked: 0
   - name: Player
     uniqueID: 480072137
+    locked: 0
+  - name: UI
+    uniqueID: 68344189
     locked: 0

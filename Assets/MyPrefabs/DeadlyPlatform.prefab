@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6807577528530390513}
   m_Layer: 0
   m_Name: DeadlyPlatform
-  m_TagString: Untagged
+  m_TagString: DeadlyPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
