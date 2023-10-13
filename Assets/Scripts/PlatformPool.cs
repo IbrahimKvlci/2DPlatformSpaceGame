@@ -75,7 +75,6 @@ public class PlatformPool : MonoBehaviour
             {
                 _platforms[i + 5].GetComponent<Gold>().OffGold();
                 float randomGold = Random.Range(0.0f, 1.0f);
-                print(randomGold);
                 if (randomGold > 0.4f)
                 {
                     print("a");

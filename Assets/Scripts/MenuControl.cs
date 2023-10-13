@@ -9,11 +9,19 @@ public class MenuControl : MonoBehaviour
     [SerializeField] Sprite[] _musicIcons;
     [SerializeField] Button _musicButton;
 
-    bool _musicOn;
 
     void Start()
     {
         
+        if (!Prefs.IsThereDifficultyPref())
+        {
+            Prefs.SetDifficulty(0);
+        }
+        if (!Prefs.IsThereMusicOnPref())
+        {
+            Prefs.SetMusicOn(1);
+        }
+        CheckMusicSettings();
     }
 
     
@@ -36,15 +44,27 @@ public class MenuControl : MonoBehaviour
     }
     public void Music()
     {
-        if (_musicOn)
+        if (Prefs.GetMusicOn()==1)
         {
-            _musicOn = false;
+            Prefs.SetMusicOn(0);
             _musicButton.image.sprite = _musicIcons[0];
         }
         else
         {
-            _musicOn = true;
+            Prefs.SetMusicOn(1);
             _musicButton.image.sprite = _musicIcons[1];
+        }
+    }
+
+    void CheckMusicSettings()
+    {
+        if (Prefs.GetMusicOn() == 1)
+        {
+            _musicButton.image.sprite = _musicIcons[1];
+        }
+        else
+        {
+            _musicButton.image.sprite = _musicIcons[0];
         }
     }
 }
