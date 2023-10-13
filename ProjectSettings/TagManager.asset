@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Foot
+  - Platform
+  - DeadlyPlatform
+  - DeadLine
   layers:
   - Default
   - TransparentFX

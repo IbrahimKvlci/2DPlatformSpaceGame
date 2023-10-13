@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float _jumpForce;
-    [SerializeField] float _jumpLimit = 3;
+    [SerializeField] int _jumpLimit = 3;
 
     Rigidbody2D _rb;
     Animator _animator;
@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 _velocity;
 
-    float _jumpCount;
+    int _jumpCount;
     float _horizontal;
 
     bool _isJumping;
@@ -102,6 +102,7 @@ public class PlayerMovement : MonoBehaviour
         {
             _rb.AddForce(new Vector2(0, _jumpForce), ForceMode2D.Impulse);
             _animator.SetBool("Jump", true);
+            FindObjectOfType<SliderControl>().SliderValue(_jumpLimit, _jumpCount);
         }
         
     }
@@ -110,10 +111,20 @@ public class PlayerMovement : MonoBehaviour
     {
         _animator.SetBool("Jump", false);
         _jumpCount++;
+        FindObjectOfType<SliderControl>().SliderValue(_jumpLimit, _jumpCount);
     }
 
     public void ResetJumpCount()
     {
         _jumpCount = 0;
+        FindObjectOfType<SliderControl>().SliderValue(_jumpLimit, _jumpCount);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "DeadLine")
+        {
+            FindObjectOfType<GameControl>().GameOver() ;
+        }
     }
 }
