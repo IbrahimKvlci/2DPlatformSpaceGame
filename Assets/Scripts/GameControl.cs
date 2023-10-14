@@ -21,8 +21,10 @@ public class GameControl : MonoBehaviour
 
     public void GameOver()
     {
+
         _gameOverPanel.SetActive(true);
         FindObjectOfType<Score>().GameOver();
+        FindObjectOfType<PlayerMovement>().GameOver();
         TurnOffUI();
     }
 
