@@ -5,8 +5,12 @@ using UnityEngine;
 public static class Prefs
 {
     public static string _difficulty="difficulty";
-    public static string _difficultyScore = "difficultyScore";
-    public static string _difficultyGold = "difficultyGold";
+    public static string _easyScore = "easyScore";
+    public static string _mediumScore = "mediumScore";
+    public static string _hardScore = "hardScore";
+    public static string _easyGold = "easyGold";
+    public static string _mediumGold = "mediumGold";
+    public static string _hardGold = "hardGold";
     public static string _musicOn = "musicOn";
 
     public static void SetDifficulty(int difficulty)
@@ -14,14 +18,14 @@ public static class Prefs
         PlayerPrefs.SetInt(Prefs._difficulty, difficulty);
     }
 
-    public static void SetDifficultyScore(int difficultyScore)
+    public static void SetDifficultyScore(string key,int difficultyScore)
     {
-        PlayerPrefs.SetInt(Prefs._difficultyScore, difficultyScore);
+        PlayerPrefs.SetInt(key, difficultyScore);
     }
 
-    public static void SetDifficultyGold(int difficultyGold)
+    public static void SetDifficultyGold(string key,int difficultyGold)
     {
-        PlayerPrefs.SetInt(Prefs._difficultyGold, difficultyGold);
+        PlayerPrefs.SetInt(key, difficultyGold);
     }
 
     public static void SetMusicOn(int musicOn)
@@ -33,13 +37,13 @@ public static class Prefs
     {
         return PlayerPrefs.GetInt(Prefs._difficulty);
     }
-    public static int GetDifficultyScore()
+    public static int GetDifficultyScore(string key)
     {
-        return PlayerPrefs.GetInt(Prefs._difficultyScore);
+        return PlayerPrefs.GetInt(key);
     }
-    public static int GetDifficultyGold()
+    public static int GetDifficultyGold(string key)
     {
-        return PlayerPrefs.GetInt(Prefs._difficultyGold);
+        return PlayerPrefs.GetInt(key);
     }
     public static int GetMusicOn()
     {

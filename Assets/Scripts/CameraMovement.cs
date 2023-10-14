@@ -12,9 +12,28 @@ public class CameraMovement : MonoBehaviour
 
     void Start()
     {
-        _speed = 0.5f;
-        _speedBoost = 0.05f;
-        _maxSpeed = 2f;
+        switch (Prefs.GetDifficulty())
+        {
+            case 0:
+                _speed = 0.3f;
+                _speedBoost = 0.03f;
+                _maxSpeed = 1.5f;
+                break;
+            case 1:
+                _speed = 0.5f;
+                _speedBoost = 0.05f;
+                _maxSpeed = 2;
+                break;
+            case 2:
+                _speed = 0.8f;
+                _speedBoost = 0.08f;
+                _maxSpeed = 2.5f;
+                break;
+            default:
+                break;
+        }
+
+        
     }
 
 

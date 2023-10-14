@@ -20,7 +20,22 @@ public class Platform : MonoBehaviour
     void Start()
     {
         _col = GetComponent<Collider2D>();
-        _randomSpeed = Random.Range(0.5f, 1);
+
+
+        switch (Prefs.GetDifficulty())
+        {
+            case 0:
+                _randomSpeed = Random.Range(0.2f, 0.8f);
+                break;
+            case 1:
+                _randomSpeed = Random.Range(0.5f, 1);
+                break;
+            case 2:
+                _randomSpeed = Random.Range(0.8f, 1.5f);
+                break;
+            default:
+                break;
+        }
 
         float _objectSize = _col.bounds.size.x/2;
 

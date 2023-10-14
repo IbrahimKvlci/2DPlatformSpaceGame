@@ -19,6 +19,8 @@ public class Score : MonoBehaviour
 
     int _score;
     int _gold;
+    int _bestScore;
+    int _bestGold;
 
     bool _gameOver;
 
@@ -47,6 +49,48 @@ public class Score : MonoBehaviour
 
     public void GameOver()
     {
+        switch (Prefs.GetDifficulty())
+        {
+            case 0:
+                _bestScore = Prefs.GetDifficultyScore(Prefs._easyScore);
+                _bestGold = Prefs.GetDifficultyGold(Prefs._easyGold);
+                if (_score > _bestScore)
+                {
+                    Prefs.SetDifficultyScore(Prefs._easyScore, _score);
+                }
+                if (_gold > _bestGold)
+                {
+                    Prefs.SetDifficultyGold(Prefs._easyGold, _gold);
+                }
+                break;
+            case 1:
+                _bestScore = Prefs.GetDifficultyScore(Prefs._mediumScore);
+                _bestGold = Prefs.GetDifficultyGold(Prefs._mediumGold);
+                if (_score > _bestScore)
+                {
+                    Prefs.SetDifficultyScore(Prefs._mediumScore, _score);
+                }
+                if (_gold > _bestGold)
+                {
+                    Prefs.SetDifficultyGold(Prefs._mediumGold, _gold);
+                }
+                break;
+            case 2:
+                _bestScore = Prefs.GetDifficultyScore(Prefs._hardScore);
+                _bestGold = Prefs.GetDifficultyGold(Prefs._hardGold);
+                if (_score > _bestScore)
+                {
+                    Prefs.SetDifficultyScore(Prefs._hardScore, _score);
+                }
+                if (_gold > _bestGold)
+                {
+                    Prefs.SetDifficultyGold(Prefs._hardGold, _gold);
+                }
+                break;
+            default:
+                break;
+        }
+
         _gameOver = true;
         _gameOverScoreText.text = $"Score: {_score}";
         _gameOverGoldText.text =$"X{ _gold}";
