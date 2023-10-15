@@ -47,11 +47,13 @@ public class MenuControl : MonoBehaviour
         if (Prefs.GetMusicOn()==1)
         {
             Prefs.SetMusicOn(0);
+            MusicControl._instance.PlayMusic(false);
             _musicButton.image.sprite = _musicIcons[0];
         }
         else
         {
             Prefs.SetMusicOn(1);
+            MusicControl._instance.PlayMusic(true);
             _musicButton.image.sprite = _musicIcons[1];
         }
     }
@@ -60,10 +62,12 @@ public class MenuControl : MonoBehaviour
     {
         if (Prefs.GetMusicOn() == 1)
         {
+            MusicControl._instance.PlayMusic(true);
             _musicButton.image.sprite = _musicIcons[1];
         }
         else
         {
+            MusicControl._instance.PlayMusic(false);
             _musicButton.image.sprite = _musicIcons[0];
         }
     }

@@ -10,6 +10,7 @@ public class BackgroundMovementControl : MonoBehaviour
     void Start()
     {
         _backgroundPosition = transform.position.y;
+        FindObjectOfType<Planets>().PlacePlanet(_backgroundPosition);
     }
 
     
@@ -26,6 +27,7 @@ public class BackgroundMovementControl : MonoBehaviour
     void SetBackgroundPosition()
     {
         _backgroundPosition += (_distance * 2);
+        FindObjectOfType<Planets>().PlacePlanet(_backgroundPosition);
         Vector2 newPosition = new Vector2(0, _backgroundPosition);
         transform.position = newPosition;
     }
